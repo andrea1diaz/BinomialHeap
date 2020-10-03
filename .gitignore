@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# lldb
+*.out.dSYM/
+
+# vim
+*.swp
