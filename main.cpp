@@ -10,6 +10,6 @@ int main () {
 	bh.insert(3);
 	bh.insert(5);
 
-	bh.print_roots();
+	bh.print_heap();
 	return 0;
 }

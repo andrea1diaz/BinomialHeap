@@ -22,7 +22,12 @@ public:
 	void print_children () {
 		std::cout << "|--> ";
 		for (auto i : children) {
-			if (i) std::cout << i->key << " ";
+			if (i) {
+				std::cout << i->key << " ";
+				
+			if (i->children.size() > 0)
+				i->print_children();	
+			}
 		}
 		std::cout << "\n";
 	}

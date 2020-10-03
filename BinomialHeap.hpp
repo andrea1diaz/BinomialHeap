@@ -61,7 +61,13 @@ public:
 		}
 	}
 
-	void print_roots () {
+	T get_min () {
+		for (auto i : grados) {
+			
+		}
+	}
+
+	void print_heap () {
 		for (auto i : grados) {
 			if (i) {
 				std::cout << i->key << "\n";
