@@ -2,14 +2,14 @@
 #define NODE_H
 
 #include <iostream>
-#include <list>
+#include <vector>
 
 template <class T>
 class Node {
 public:
 	int grado;
 	T key;
-	std::list<Node<T> *> children;
+	std::vector<Node<T> *> children;
 	Node<T> *parent;
 
 	Node();
@@ -20,7 +20,8 @@ public:
 	}
 
 	void print_children () {
-		std::cout << "|--> ";
+		if(children.size()) 
+			std::cout << "|--> ";
 		for (auto i : children) {
 			if (i) {
 				std::cout << i->key << " ";
