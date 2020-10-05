@@ -5,6 +5,7 @@
 #include <list>
 #include <vector>
 #include <limits>
+#include <fstream>
 
 #include "Node.hpp"
 
@@ -118,7 +119,43 @@ public:
         return nullptr;
     }
 
+    void output() {
+        std::ofstream file;
+        file.open("grafo.vz");
+        file << "digraph\n{" << std::endl;
+        std::vector<T> roots;
+        for (int i = 0; i < grados.size(); ++i) {
+            if (grados[i]) {
+                roots.push_back(grados[i]->key);
+            }
+            helper(grados[i], file);
+        }
+
+        if (roots.size() > 1) {
+            for (int i = 0; i < roots.size() - 1; ++i) {
+                file << roots[i] << " -> " << roots[i+1] << std::endl;
+            }
+        }
+
+        file << "}" << std::endl;
+        file.close();
+        system("dot -Tpdf grafo.vz -o grafo.pdf");
+    }
+
+    ~BinomialHeap() {
+        output();
+    }
+
 private:
+    void helper(Node<T>* node, std::ofstream& stream) {
+        if (node) {
+            for (int i = 0; i < node->children.size(); ++i) {
+                helper(node->children[i], stream);
+                stream << node->key << " -> " << node->children[i]->key << std::endl;
+            }
+        }
+    }
+
     Node<T>* searchAux(Node<T>* node, T value) {
         if (node) {
             if (node->key == value) {
