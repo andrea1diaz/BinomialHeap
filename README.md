@@ -1,3 +1,7 @@
+## Requisitos
+Instalar graphviz
+* Mac: `brew install graphviz`
+
 ## Generar el archivo
 * El main llama a la función output (la cual es llamada en el destructor), la cual crea el archivo `grafo.vz`.
 * Para generar el .pdf se debe ejecutar el comando `dot -Tpdf grafo.vz -o grafo.pdf` (se ejecuta al finalizar la llamada a `output()`).
