@@ -138,12 +138,6 @@ public:
             }
             helper(grados[i], file);
         }
-        // if (roots.size() > 1) {
-        //     for (int i = 0; i < roots.size() - 1; ++i) {
-        //         file << roots[i] << " -> " << roots[i+1] << std::endl;
-        //     }
-        // }
-
         file << "}" << std::endl;
         file.close();
         system("dot -Tpdf grafo.vz -o grafo.pdf");
