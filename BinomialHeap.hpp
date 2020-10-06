@@ -119,6 +119,11 @@ public:
         return nullptr;
     }
 
+    void buildFromInput() {
+        T n;
+        while(std::cin >> n) insert(n);
+    }
+
     void output() {
         std::ofstream file;
         file.open("grafo.vz");

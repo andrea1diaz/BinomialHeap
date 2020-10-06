@@ -43,3 +43,6 @@
 # graph
 grafo.vz
 grafo.pdf
+
+# txt
+*.txt
