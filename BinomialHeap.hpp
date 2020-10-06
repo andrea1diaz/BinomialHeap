@@ -128,19 +128,21 @@ public:
         std::ofstream file;
         file.open("grafo.vz");
         file << "digraph\n{" << std::endl;
+        file << "edge [dir=none];" << std::endl;
+        file << "_ [style=invis, fontsize=0.01, shape=circle, width=.01, fixedsize=true];" << std::endl;
         std::vector<T> roots;
         for (int i = 0; i < grados.size(); ++i) {
             if (grados[i]) {
                 roots.push_back(grados[i]->key);
+                file << "_ -> "  << grados[i]->key << " [style=invis];" << std::endl;
             }
             helper(grados[i], file);
         }
-
-        if (roots.size() > 1) {
-            for (int i = 0; i < roots.size() - 1; ++i) {
-                file << roots[i] << " -> " << roots[i+1] << std::endl;
-            }
-        }
+        // if (roots.size() > 1) {
+        //     for (int i = 0; i < roots.size() - 1; ++i) {
+        //         file << roots[i] << " -> " << roots[i+1] << std::endl;
+        //     }
+        // }
 
         file << "}" << std::endl;
         file.close();
